@@ -28,8 +28,12 @@ async def lifespan(app: FastAPI):
     )
 
     print(f"NOTIFICATION enregistré dans Eureka sur le port {PORT}")
-
-
+    try:
+            yield
+    finally:
+            # Arrêt : désenregistrer NOTIFICATION
+            await eureka_client.stop_async()
+            print("NOTIFICATION arrêté dans Eureka")
 
 
 app = FastAPI(
