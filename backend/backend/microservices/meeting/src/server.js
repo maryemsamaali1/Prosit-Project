@@ -15,7 +15,10 @@ const eurekaClient = new Eureka({
         hostName: 'localhost',
         ipAddr: '127.0.0.1',
 
-        statusPageUrl: `http://localhost:${PORT}`,
+        //statusPageUrl: `http://localhost:${PORT}`,
+
+        healthCheckUrl: `http://localhost:${PORT}/health`,
+        statusPageUrl: `http://localhost:${PORT}/info`,
 
         port: {
             '$': PORT,
